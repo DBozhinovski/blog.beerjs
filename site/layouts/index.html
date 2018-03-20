@@ -1,5 +1,18 @@
 {{ define "main" }}
 
-Beerjs blog
+<div class="root">
+  {{ partial "nav" . }}
+
+  <div class="contents">
+    <ul>
+      {{ range (.Paginator 4).Pages.ByPublishDate }}
+        <div>
+          {{ .Render "li"}}
+        </div>
+      {{ end }}
+    </ul>
+    {{ partial "pagination" . }}
+  </div>
+</div>
 
 {{ end }}

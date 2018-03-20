@@ -1,6 +1,7 @@
 {{ define "main" }}
-
-  <div>
+<div class="root">
+  {{ partial "nav" . }}
+  <div class="contents">
     <h1>{{.Title}}</h1>
     <div>
       <p>{{ .Date.Format "Mon, Jan 2, 2006" }}</p>
@@ -12,4 +13,5 @@
       {{ .Content }}
     </div>
   </div>
+</div>
 {{ end }}
