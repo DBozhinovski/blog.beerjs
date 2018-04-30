@@ -5,7 +5,7 @@
 
   <div class="contents">
     <ul>
-      {{ range (.Paginator 4).Pages.ByPublishDate }}
+      {{ range ( where .Data.Pages.ByDate.Reverse "Section" "post" ) }}
         <div>
           {{ .Render "li"}}
         </div>

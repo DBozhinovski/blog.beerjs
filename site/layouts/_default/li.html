@@ -1,14 +1,8 @@
-<a href="{{ .Permalink }}" class="listing">
-	<figure>
-		<img src="{{ .Params.cover }}" />
-		<figcaption>
-				<h4>{{ .Params.caption }}</h4>
-		</figcaption>
-	</figure>
+<div class="listing">
+	<h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
 	<div>
-		<h2>{{ .Title }}</h2>
-		<p>{{ .Date.Format "2006-01-02" }}</p>
-		<p>{{ .Description }}</p>
-		<p>Read more →</p>
+		<p>📅 {{ .Date.Format "2006-01-02" }}</p>
+		<p class="summary">{{ .Summary }}</p>
+		<p><a href="{{ .Permalink }}">Повеќе →</a></p>
 	</div>
 </a>

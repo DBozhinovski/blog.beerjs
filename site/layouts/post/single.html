@@ -2,15 +2,65 @@
 <div class="root">
   {{ partial "nav" . }}
   <div class="contents">
-    <h1>{{.Title}}</h1>
-    <div>
-      <p>{{ .Date.Format "Mon, Jan 2, 2006" }}</p>
-      <p>Read in {{ .ReadingTime }} minutes</p>
-    </div>
-    <div>
-      <p>{{ .Description }}</p>
-      {{ if .Params.image }}<img src="{{ .Params.image }}" alt="{{ .Title }}" />{{ end }}
-      {{ .Content }}
+    <div class="single">
+      <h2>{{.Title}}</h2>
+      <div class="meta">
+        <p>📅 {{ .Date.Format "2006-01-02" }}</p>
+        <p>Време на читање: {{ .ReadingTime }} минути</p>
+      </div>
+      <div class="text">
+        {{ .Content }}
+      </div>
+      {{ if isset .Params "author" }}
+      <div class="share">
+          <h4>Сподели на:</h4>
+          <ul>
+            <li>
+              <a href="#" data-social="twitter">Twitter</a>
+            </li>
+            <li>
+                <a href="#" data-social="facebook">Facebook</a>
+            </li>
+            <li>
+                <a href="#" data-social="googleplus">G+</a>
+              </li>
+          </ul>
+      </div>
+      <div class="author">
+          <div class="data">
+            <img src="https://www.gravatar.com/avatar/{{ $.Param "author.email" | md5 }}?s=100&d=identicon"> 
+            <p>
+              <b>{{ $.Param "author.name" }}</b> <br/>
+              {{ $.Param "author.about" }} <br/>
+              <a href="{{ $.Param "author.link" }}">{{ $.Param "author.link" }}</a>
+            </p>
+          </div>
+      </div>
+      {{ end }}
+      <div class="comments">
+        <h4>Коментари</h4>
+        <div id="disqus_thread"></div>
+        <script src="https://cdn.jsdelivr.net/npm/goodshare.js@4/goodshare.min.js"></script>
+        <script>
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        var disqus_config = function () {
+          this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+          this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://blog-beerjs-mk.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>                            
+      </div>
+      <div class="footer">
+        <span>BeerJS MK</span> <span>*</span> <img src="/img/cc.svg" />
+      </div>
     </div>
   </div>
 </div>

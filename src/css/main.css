@@ -1,2 +1,4 @@
-/* @import "imports/tufte.css"; */
 @import "imports/base.css";
+@import "imports/large.css";
+@import "imports/medium.css";
+@import "imports/small.css";
