@@ -148,6 +148,10 @@
     line-height: 1.5em;
   }
 
+  .single .text p {
+    text-indent: 2em;
+  }
+
   .single .text figure {
     width: 100%;
     margin: 0;
